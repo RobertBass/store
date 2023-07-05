@@ -55,6 +55,7 @@ const NavBar = () => {
           <ShoppingCartIcon 
             className="w-6 h-6" 
             strokeWidth={1.5}
+            onClick={() => context.openShoppingCart()}
           />
           <div>{context.counter}</div>
         </li>
