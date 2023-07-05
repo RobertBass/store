@@ -1,0 +1,13 @@
+#category {
+    font-weight: bold;
+}
+
+#category:hover {
+    color: gold;
+    font-size: large;
+}
+
+#category:focus {
+    color: gold;
+    font-size: large;
+}
