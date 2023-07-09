@@ -20,15 +20,18 @@ export const ContextProvider = ({ children }) => {
     const [counter, setCounter] = useState(0);
     const [cartProducts, setCartProducts] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
+
+
     const addProductToCart = (event, product) => {
         event.stopPropagation();
         setCounter(counter + 1);
         setCartProducts([...cartProducts, product]);
-        openShoppingCart();
-        closeProductDetail();
     }
 
-    const openShoppingCart = () => setIsCartOpen(true);
+    const openShoppingCart = () => {
+        setIsCartOpen(true);
+        closeProductDetail();
+    }
     const closeShoppingCart = () => setIsCartOpen(false);
 
     return (
@@ -38,7 +41,6 @@ export const ContextProvider = ({ children }) => {
             isActive,
             openProductDetail,
             closeProductDetail,
-            isActive,
             detail,
             setDetail,
             showProduct,
