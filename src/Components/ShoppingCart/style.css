@@ -1,5 +1,81 @@
 .shopping-cart {
-    width: 500px;
+    width: 896px;
     height: calc(100vh - 68px);
     top: 68px;
+}
+
+#itemContainer {
+    width: 98%;
+}
+
+#headTitleCol {
+    width: 97%;
+}
+
+#description {
+    width: 52%;
+}
+
+#quantity {
+    width: 12%;
+}
+
+#price {
+    width: 12%;
+}
+
+#subtotal {
+    width: 12%;
+}
+
+#remove {
+    width: 12%;
+}
+
+#itemImg {
+    width: 10%;
+    height: 100%;
+}
+
+#figure {
+    height: 100%;
+}
+
+#image {
+    height: 100%;
+}
+
+#itemTitle {
+    width: 40%;
+}
+
+#itemQuantityContainer {
+    width: 14%;
+}
+
+#lessButton {
+    width: 10%;
+}
+
+#plusButton {
+    width: 10%;
+}
+
+#itemQuantity {
+    width: 80%;
+    text-align: center;
+}
+
+#itemPrice {
+    width: 12%;
+    text-align: center;
+}
+
+#itemSubtotal {
+    width: 12%;
+    text-align: center;
+}
+
+#itemRemove {
+    width: 12%;
 }

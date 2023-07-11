@@ -9,7 +9,7 @@ const API = "https://fakestoreapi.com/products/categories";
 const menus = ["my-orders", "my-account", "sign-in"];
 
 const activeStyle =
-  "underline underline-offset-4";
+  "underline underline-offset-4 text-yellow-500 text-lg";
 
 const isActive = ({ isActive }) => (isActive ? activeStyle : undefined);
 
@@ -49,13 +49,13 @@ const NavBar = () => {
       </ul>
 
       <ul className="flex items-center gap-5">
-        <li className="text-yellow-400">tu@email.com</li>
+        <li className="text-yellow-500 font-semibold italic">tu@email.com</li>
         {menus.map((menu) => Item(menu))}
         <li className="flex items-center">
           <ShoppingCartIcon 
             className="w-6 h-6" 
             strokeWidth={1.5}
-            onClick={() => context.openShoppingCart()}
+            onClick={() => context.setIsCartOpen(!context.isCartOpen)}
           />
           <div>{context.counter}</div>
         </li>

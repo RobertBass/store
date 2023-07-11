@@ -1,30 +1,9 @@
 import { useContext } from "react";
 import { Context } from "../../Context";
-import { FolderPlusIcon, CheckIcon } from "@heroicons/react/24/solid";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 const Card = (data) => {
   const context = useContext(Context);
-
-  const rendericon = (id) => {
-    const isInCart =
-      context.cartProducts.filter((proudct) => proudct.id === id).length > 0;
-    if (isInCart) {
-      return (
-        <div className="absolute top-0 right-0 flex justify-center items-center bg-green-500 text-white font-semibold w-10 h-10 rounded-full m-1 p-1">
-          <CheckIcon className="w-8 h-8" />
-        </div>
-      )
-    } else {
-      return (
-        <div
-          className="absolute top-0 right-0 flex justify-center items-center bg-black text-yellow-400 w-10 h-10 rounded-full m-1 p-1"
-          onClick={(event) => context.addProductToCart(event, data.data)}
-        >
-          <FolderPlusIcon className="w-8 h-8" />
-        </div>
-      );
-    }
-  };
 
   return (
     <div
@@ -40,7 +19,12 @@ const Card = (data) => {
           src={data.data.image}
           alt={data.data.title}
         />
-        {rendericon(data.data.id)}
+        <div
+          className="absolute top-0 right-0 flex justify-center items-center bg-green-600 text-white w-10 h-10 rounded-full m-1 p-1"
+          onClick={(event) => context.addProductToCart(event, data.data)}
+        >
+          <PlusIcon className="w-8 h-8" />
+        </div>
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light ml-2 w-80">{data.data.title}</span>

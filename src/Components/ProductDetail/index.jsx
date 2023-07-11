@@ -1,6 +1,5 @@
 import "./style.css";
-import { XMarkIcon } from '@heroicons/react/24/solid';
-import { FolderPlusIcon } from "@heroicons/react/24/solid";
+import { PlusIcon, ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { Context } from "../../Context";
 import { useContext } from "react";
 
@@ -15,7 +14,7 @@ const ProductDetail = () => {
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">Item Detail</h2>
         <div onClick={() => {context.closeProductDetail()}}>
-          <XMarkIcon className="h-8 w-8 text-yellow-400 bg-black cursor-pointer"/>
+          <ArrowUturnLeftIcon className="h-8 w-8 text-green-600  cursor-pointer"/>
         </div>
       </div>
       <figure className="px-6">
@@ -28,9 +27,9 @@ const ProductDetail = () => {
           <span className="font-light text-sm">{context.detail.description}</span>
         </p>
         <div 
-          className="absolute bg-black text-yellow-400 w-10 h-10 mt-2 ml-72 rounded-full m-1 p-1"
+          className="absolute cursor-pointer bg-green-600 text-white w-10 h-10 mt-2 ml-72 rounded-full m-1 p-1"
           onClick={(event) => context.addProductToCart(event, context.detail)}>
-          <FolderPlusIcon className="w-8 h-8"/>
+          <PlusIcon className="w-8 h-8"/>
         </div>
       </div>
     </aside>
