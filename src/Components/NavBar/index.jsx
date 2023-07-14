@@ -13,15 +13,7 @@ const activeStyle =
 
 const isActive = ({ isActive }) => (isActive ? activeStyle : undefined);
 
-const Item = (object) => {
-  return (
-    <li key={object} className="text-md italic">
-      <NavLink to={`/${object}`} className={isActive} id="category">
-        {object}
-      </NavLink>
-    </li>
-  );
-};
+
 
 // **************************COMPONENT**************************
 const NavBar = () => {
@@ -34,14 +26,31 @@ const NavBar = () => {
       .then((data) => setCategories(data));
   }, []);
 
+  const Item = (object) => {
+    return (
+      <li key={object} className="text-md italic">
+        <NavLink 
+          to={`/${object.replace(/\'|\s+/g, '')}`} 
+          onClick={() => context.setCategory(object)}
+          className={isActive} id="category">
+          {object}
+        </NavLink>
+      </li>
+    );
+  };
+
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-blue-600 text-white">
       <ul className="flex items-center gap-5">
         <li className="font-extrabold text-lg">
-          <NavLink to="/">shopi</NavLink>
+          <NavLink to="/" onClick={() => context.setCategory(null)}>shopi</NavLink>
         </li>
         <li className="text-md italic">
-          <NavLink to="/" className={isActive} id="category">
+          <NavLink 
+            to="/"
+            onClick={() => context.setCategory(null)} 
+            className={isActive} 
+            id="category">
             all
           </NavLink>
         </li>

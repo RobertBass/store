@@ -1,0 +1,35 @@
+#itemContainer {
+    width: 100%;
+}
+
+#itemImg {
+    width: 10%;
+    height: 100%;
+}
+
+#figure {
+    height: 100%;
+}
+
+#image {
+    height: 100%;
+}
+
+#itemTitle {
+    width: 40%;
+}
+
+#itemQuantity {
+    width: 80%;
+    text-align: center;
+}
+
+#itemPrice {
+    width: 12%;
+    text-align: center;
+}
+
+#itemSubtotal {
+    width: 12%;
+    text-align: center;
+}

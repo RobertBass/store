@@ -12,12 +12,20 @@ const OrderCard = ({
   quantity,
   subtotal,
   deleteProductOfCart,
+  data
 }) => {
   const context = useContext(Context);
 
   return (
-    <div className="flex justify-between items-center h-24 border-2 rounded-lg shadow-lg mb-3 hover:shadow-blue-400" id="itemContainer">
-      <div className="flex items-center justify-center" id="itemImg">
+    <div 
+      className="flex justify-between items-center h-24 border-2 py-3 rounded-lg shadow-lg mb-3 hover:shadow-blue-400" 
+      id="itemContainer"
+    >
+      <div 
+        className="flex items-center justify-center cursor-pointer" 
+        id="itemImg"
+        onClick={() => context.showProduct(data)}
+      >
         <figure id="figure">
           <img
             id="image"
@@ -27,7 +35,11 @@ const OrderCard = ({
           />
         </figure>
       </div>
-      <div className="flex items-center ml-4 mr-6" id="itemTitle">
+      <div 
+        onClick={() => context.showProduct(data)} 
+        className="flex items-center ml-4 mr-6 cursor-pointer" 
+        id="itemTitle"
+      >
         <p className="text-md font-light">{title}</p>
       </div>
       <div className="flex flex-row items-center" id="itemQuantityContainer">
@@ -51,9 +63,9 @@ const OrderCard = ({
       <div id="itemSubtotal">
         <p className="text-lg font-medium">{subtotal}</p>
       </div>
-      <div id="itemRemove">        
+      <div id="itemRemove">
         <XMarkIcon
-          className="h-6 w-6 ml-10 text-red-600 font-extrabold"
+          className="h-6 w-6 ml-10 text-red-600 font-extrabold cursor-pointer"
           onClick={() => deleteProductOfCart(id)}
         />
       </div>
