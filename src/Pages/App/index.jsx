@@ -1,5 +1,6 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom';
-import { ContextProvider } from '../../Context';
+import { useContext } from 'react';
+import { useRoutes, BrowserRouter, Navigate } from 'react-router-dom';
+import { Context, ContextProvider, initLocalStorage} from '../../Context';
 import { Home } from '../Home';
 import { MyAccount } from '../MyAccount/Index';
 import { MyOrder } from '../MyOrder/Index';
@@ -11,12 +12,13 @@ import { ShoppingCart } from '../../Components/ShoppingCart';
 import './App.css'
 
 const AppRoutes = () => {
+  const context = useContext(Context);
   let routes = useRoutes([
-    {path: '/', element: <Home />},
-    {path: '/electronics', element: <Home />},
+    {path: '/', element: context.hasUserAnAccount &&  !context.isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/electronics', element: context.hasUserAnAccount &&  !context.isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
     {path: '/jewelery', element: <Home />},
-    {path: '/mensclothing', element: <Home />},
-    {path: '/womensclothing', element: <Home />},
+    {path: '/mensclothing', element: context.hasUserAnAccount &&  !context.isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/womensclothing', element: context.hasUserAnAccount &&  !context.isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
     {path: '/my-account', element: <MyAccount />},
     {path: '/my-order', element: <MyOrder />},
     {path: '/my-orders', element: <MyOrders />},
@@ -30,6 +32,8 @@ const AppRoutes = () => {
 }
 
 const App = () => {
+  initLocalStorage();
+  
   return (
     <ContextProvider>
       <BrowserRouter>
