@@ -26,7 +26,7 @@ const Card = (data) => {
           <PlusIcon className="w-8 h-8" />
         </div>
       </figure>
-      <p className="flex justify-between">
+      <p className="flex justify-between items-center">
         <span className="text-sm font-light ml-2 w-80">{data.data.title}</span>
         <span className="text-lg font-medium w-20">${data.data.price}</span>
       </p>

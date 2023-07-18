@@ -270,8 +270,7 @@ export const ContextProvider = ({ children }) => {
     return <Navigate replace to={"/"} />;
   };
 
-  // RENDER SIGNIN OR CREATE USER
-
+  
 
   const strSignOut = localStorage.getItem("sign-out");
   const parsedSignOut = JSON.parse(strSignOut);
@@ -283,6 +282,8 @@ export const ContextProvider = ({ children }) => {
   const noAccountInLocalState = parsedAccount ? Object.keys(account).length === 0 : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
 
+  
+  // CREATE AN ACCOUNT
   const createAnAccount = (form) => {
     const formData = new FormData(form.current);
     const data = {
@@ -298,10 +299,28 @@ export const ContextProvider = ({ children }) => {
     setView("user-login");
   };
 
+  // EDIT USER INFO
+  const editAccount = (form) => {
+    const formData = new FormData(form.current)
+		const data = {
+			name: formData.get('name'),
+			email: formData.get('email'),
+			password: formData.get('password')
+		}
 
+    const stringifiedAccount = JSON.stringify(data)
+    localStorage.setItem('account', stringifiedAccount)
+    setAccount(data)
+  }
+
+
+  // RENDER SIGNIN OR CREATE USER
   const renderViewSignIn = (render1, render2) => view === "create-user" ? render2 : render1;
 
+  // RENDER CATEGORIES OR SIGN IN
   const renderViewCategories = (render1, render2) => (hasUserAnAccount && !isUserSignOut) ? render1 : render2;
+
+  const renderViewUserInfo = (render1, render2) => view === 'edit-user-info' ? render1 : render2;
 
   return (
     <Context.Provider
@@ -349,10 +368,12 @@ export const ContextProvider = ({ children }) => {
         handleSignOut,
         handleSignIn,
         createAnAccount,
+        editAccount,
         isUserSignOut,
         hasUserAnAccount,
         renderViewSignIn,
         renderViewCategories,
+        renderViewUserInfo,
       }}
     >
       {children}
